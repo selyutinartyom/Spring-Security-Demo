@@ -5,7 +5,7 @@ import org.demo.constants.EntitiesConst;
 import javax.persistence.*;
 
 /**
- * Сущность Пользователь
+ * РЎСѓС‰РЅРѕСЃС‚СЊ - РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ
  *
  * Created by Selutin_AV on 05.08.2015.
  */

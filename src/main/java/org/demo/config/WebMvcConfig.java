@@ -5,8 +5,8 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * Привязка запросов из адресной строки к шаблонам из ресурсов.
- * Используется Spring MVC адаптор конфигуратора.
+ * РџСЂРёРІСЏР·РєР° Р·Р°РїСЂРѕСЃРѕРІ РёР· Р°РґСЂРµСЃРЅРѕР№ СЃС‚СЂРѕРєРё Рє С€Р°Р±Р»РѕРЅР°Рј РёР· СЂРµСЃСѓСЂСЃРѕРІ.
+ * РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Spring MVC Р°РґР°РїС‚РµСЂ РєРѕРЅС„РёРіСѓСЂР°С‚РѕСЂР°.
  *
  * Created by Selutin_AV on 05.08.2015.
  */

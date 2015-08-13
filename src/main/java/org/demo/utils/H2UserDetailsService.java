@@ -21,7 +21,8 @@ import java.util.List;
 public class H2UserDetailsService implements UserDetailsService {
 
     /*
-    Autowired для того, чтобы Spring подставил в users реализованный интерфейс репозитория юзеров из базы данных
+    Autowired РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ Spring РїРѕРґСЃС‚Р°РІРёР» РІ users
+    СЂРµР°Р»РёР·РѕРІР°РЅРЅС‹Р№ РёРЅС‚РµСЂС„РµР№СЃ СЂРµРїРѕР·РёС‚РѕСЂРёСЏ СЋР·РµСЂРѕРІ РёР· Р±Р°Р·С‹ РґР°РЅРЅС‹С…
      */
     @Autowired
     IUserRepository users;
@@ -31,11 +32,11 @@ public class H2UserDetailsService implements UserDetailsService {
         UserDetails loadedUser;
 
         try {
-            // Получаем пользователя
+            // РџРѕР»СѓС‡Р°РµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
             User client = users.findByUsername(username);
-            // Возвращаем сконвертированного из сущности базы данных в сущность Spring Security пользователя.
-            // TODO наделяем пользователя ролью USER в DummyAuthority
-            // Spring сам для этого пользователя проверит соответствие введенного пароля и пароля объекта в базе данных
+            // Р’РѕР·РІСЂР°С‰Р°РµРј СЃРєРѕРЅРІРµСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РёР· СЃСѓС‰РЅРѕСЃС‚Рё Р±Р°Р·С‹ РґР°РЅРЅС‹С… РІ СЃСѓС‰РЅРѕСЃС‚СЊ Spring Security РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+            // TODO РЅР°РґРµР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЂРѕР»СЊСЋ USER РІ DummyAuthority
+            // Spring СЃР°Рј РґР»СЏ СЌС‚РѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїСЂРѕРІРµСЂРёС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ РІРІРµРґРµРЅРЅРѕРіРѕ РїР°СЂРѕР»СЏ Рё РїР°СЂРѕР»СЏ РѕР±СЉРµРєС‚Р° РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С…
             loadedUser = new org.springframework.security.core.userdetails.User(
                     client.getUsername(), client.getPassword(),
                     DummyAuthority.getAuth());
@@ -46,7 +47,7 @@ public class H2UserDetailsService implements UserDetailsService {
         return loadedUser;
     }
 
-    // TODO возможно рефакторинг DummyAuthority
+    // TODO РІРѕР·РјРѕР¶РЅРѕ СЂРµС„Р°РєС‚РѕСЂРёРЅРі DummyAuthority
     static class DummyAuthority implements GrantedAuthority {
 
         static Collection<GrantedAuthority> getAuth() {

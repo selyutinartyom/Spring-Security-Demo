@@ -12,8 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 
 /**
- * Конфигурирование Spring Security.
- * Используется Spring Security адаптор конфигуратора.
+ * РљРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅРёРµ Spring Security.
+ * РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Spring Security Р°РґР°РїС‚РµСЂ РєРѕРЅС„РёРіСѓСЂР°С‚РѕСЂР°.
  *
  * Created by Selutin_AV on 05.08.2015.
  */
@@ -24,7 +24,7 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
-     * Конфигурация доступа к шаблонам
+     * РљРѕРЅС„РёРіСѓСЂР°С†РёСЏ РґРѕСЃС‚СѓРїР° Рє С€Р°Р±Р»РѕРЅР°Рј
      *
      * @param http
      * @throws Exception
@@ -45,14 +45,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /*
-    Инстанс сервиса с пользователями. Сервис для базы данных H2.
+    РРЅСЃС‚Р°РЅСЃ СЃРµСЂРІРёСЃР° СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРјРё. РЎРµСЂРІРёСЃ РґР»СЏ Р±Р°Р·С‹ РґР°РЅРЅС‹С… H2.
      */
     @Autowired
     private H2UserDetailsService h2UserDetailsService;
 
     /**
-     * Регистрируем нашу реализацию UserDetailsService.
-     * Определение сервиса для соединения юзеров Spring Security и юзеров из базы данных.
+     * Р РµРіРёСЃС‚СЂРёСЂСѓРµРј РЅР°С€Сѓ СЂРµР°Р»РёР·Р°С†РёСЋ UserDetailsService.
+     * РћРїСЂРµРґРµР»РµРЅРёРµ СЃРµСЂРІРёСЃР° РґР»СЏ СЃРѕРµРґРёРЅРµРЅРёСЏ СЋР·РµСЂРѕРІ Spring Security Рё СЋР·РµСЂРѕРІ РёР· Р±Р°Р·С‹ РґР°РЅРЅС‹С….
      *
      * @param auth
      * @throws Exception
