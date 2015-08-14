@@ -15,6 +15,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * Сервис, реализующий интерфейс UserDetailsService для базы данных H2
+ * <p>
  * Created by Selutin_AV on 05.08.2015.
  */
 @Service
@@ -34,12 +36,17 @@ public class H2UserDetailsService implements UserDetailsService {
         try {
             // Получаем пользователя
             User client = users.findByUsername(username);
+
             // Возвращаем сконвертированного из сущности базы данных в сущность Spring Security пользователя.
-            // TODO наделяем пользователя ролью USER в DummyAuthority
             // Spring сам для этого пользователя проверит соответствие введенного пароля и пароля объекта в базе данных
             loadedUser = new org.springframework.security.core.userdetails.User(
-                    client.getUsername(), client.getPassword(),
-                    DummyAuthority.getAuth());
+                    client.getUsername(), client.getPassword(), client.getRoles());
+
+            // Заглушка для наделения пользователя ролью USER в DummyAuthority
+//            loadedUser = new org.springframework.security.core.userdetails.User(
+//                    client.getUsername(), client.getPassword(),
+//                    DummyAuthority.getAuth());
+
         } catch (Exception repositoryProblem) {
             throw new InternalAuthenticationServiceException(repositoryProblem.getMessage(), repositoryProblem);
         }
@@ -47,18 +54,18 @@ public class H2UserDetailsService implements UserDetailsService {
         return loadedUser;
     }
 
-    // TODO возможно рефакторинг DummyAuthority
-    static class DummyAuthority implements GrantedAuthority {
-
-        static Collection<GrantedAuthority> getAuth() {
-            List<GrantedAuthority> grantedAuthorities = new ArrayList<>(1);
-            grantedAuthorities.add(new DummyAuthority());
-            return grantedAuthorities;
-        }
-
-        @Override
-        public String getAuthority() {
-            return "USER";
-        }
-    }
+    // inner-class для заглушки DummyAuthority
+//    static class DummyAuthority implements GrantedAuthority {
+//
+//        static Collection<GrantedAuthority> getAuth() {
+//            List<GrantedAuthority> grantedAuthorities = new ArrayList<>(1);
+//            grantedAuthorities.add(new DummyAuthority());
+//            return grantedAuthorities;
+//        }
+//
+//        @Override
+//        public String getAuthority() {
+//            return "USER";
+//        }
+//    }
 }

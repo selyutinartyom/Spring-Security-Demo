@@ -3,10 +3,11 @@ package org.demo.entities;
 import org.demo.constants.EntitiesConst;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Сущность - Пользователь
- *
+ * <p>
  * Created by Selutin_AV on 05.08.2015.
  */
 @Entity
@@ -16,8 +17,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    public String username;
-    public String password;
+    private String username;
+    private String password;
+
+    @ManyToMany
+    @JoinTable(name = EntitiesConst.SQL_USERS_ROLES,
+            joinColumns = {@JoinColumn(name = EntitiesConst.SQL_USER_ID)},
+            inverseJoinColumns = @JoinColumn(name = EntitiesConst.SQL_ROLE_ID))
+    private Set<Role> roles;
 
     public User() {
     }
@@ -49,5 +56,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
