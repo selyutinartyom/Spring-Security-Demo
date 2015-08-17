@@ -23,7 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(EntitiesConst.REST_USERS)
-// TODO рефакторинг в UserRolesEnum
+// TODO рефакторинг в @securityService.hasPermission
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class UsersController {
 

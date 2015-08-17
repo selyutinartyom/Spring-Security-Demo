@@ -2,6 +2,7 @@ package org.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.demo.constants.EntitiesConst;
+import org.demo.constants.RolesEnum;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -20,7 +21,9 @@ public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String role;
+
+    @Enumerated(EnumType.STRING)
+    private RolesEnum role;
 
     @JsonIgnore
     @ManyToMany(mappedBy = EntitiesConst.SQL_ROLES)
@@ -29,7 +32,7 @@ public class Role implements GrantedAuthority {
     public Role() {
     }
 
-    public Role(String role) {
+    public Role(RolesEnum role) {
         this.role = role;
     }
 
@@ -41,11 +44,11 @@ public class Role implements GrantedAuthority {
         this.id = id;
     }
 
-    public String getRole() {
+    public RolesEnum getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(RolesEnum role) {
         this.role = role;
     }
 
@@ -59,6 +62,6 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return getRole();
+        return getRole().name();
     }
 }

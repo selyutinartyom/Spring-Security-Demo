@@ -42,7 +42,7 @@ public class H2UserDetailsService implements UserDetailsService {
             loadedUser = new org.springframework.security.core.userdetails.User(
                     client.getUsername(), client.getPassword(), client.getRoles());
 
-            // Заглушка для наделения пользователя ролью USER в DummyAuthority
+            // Заглушка для наделения пользователя ролью ROLE_USER в DummyAuthority
 //            loadedUser = new org.springframework.security.core.userdetails.User(
 //                    client.getUsername(), client.getPassword(),
 //                    DummyAuthority.getAuth());
@@ -65,7 +65,7 @@ public class H2UserDetailsService implements UserDetailsService {
 //
 //        @Override
 //        public String getAuthority() {
-//            return "USER";
+//            return "ROLE_USER";
 //        }
 //    }
 }
