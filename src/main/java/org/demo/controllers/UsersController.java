@@ -1,8 +1,9 @@
 package org.demo.controllers;
 
-import org.demo.constants.EntitiesConst;
+import org.demo.constants.UserConst;
 import org.demo.entities.User;
 import org.demo.repositories.IUserRepository;
+import org.demo.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ import java.util.List;
  * @since 14.08.2015 14:33
  */
 @RestController
-@RequestMapping(EntitiesConst.REST_USERS)
+@RequestMapping(UserConst.REST_USERS)
 // TODO рефакторинг в @securityService.hasPermission
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class UsersController {
@@ -63,7 +64,10 @@ public class UsersController {
         if (!password.equals(passwordConfirm))
             return null;
 
-        return users.save(new User(username, password));
+        // Generate hashed password
+        String hashedPassword = Utils.GenerateHashedPassword(password);
+
+        return users.save(new User(username, hashedPassword));
     }
 
     /**
@@ -73,9 +77,9 @@ public class UsersController {
      *
      * @return пара ModelAndView для контроллера
      */
-    @RequestMapping(value = EntitiesConst.REST_USERS_ADD, method = RequestMethod.GET)
+    @RequestMapping(value = UserConst.REST_USERS_ADD, method = RequestMethod.GET)
     public ModelAndView getUserForm() {
-        return new ModelAndView(EntitiesConst.PATTERN_USERS_ADD);
+        return new ModelAndView(UserConst.PATTERN_USERS_ADD);
     }
 
     /**
@@ -84,8 +88,8 @@ public class UsersController {
      *
      * @param id идентификатор пользователя
      */
-    @RequestMapping(value = EntitiesConst.REST_USERS_ID, method = RequestMethod.DELETE)
-    public void delete(@PathVariable(EntitiesConst.PATH_USERS_ID) Long id) {
+    @RequestMapping(value = UserConst.REST_USERS_ID, method = RequestMethod.DELETE)
+    public void delete(@PathVariable(UserConst.PATH_USERS_ID) Long id) {
         users.delete(id);
     }
 
@@ -96,8 +100,8 @@ public class UsersController {
      * @param id идентификатор пользователя
      * @return пользователь
      */
-    @RequestMapping(value = EntitiesConst.REST_USERS_ID, method = RequestMethod.GET)
-    public User getUser(@PathVariable(EntitiesConst.PATH_USERS_ID) Long id) {
+    @RequestMapping(value = UserConst.REST_USERS_ID, method = RequestMethod.GET)
+    public User getUser(@PathVariable(UserConst.PATH_USERS_ID) Long id) {
         return users.findOne(id);
     }
 }

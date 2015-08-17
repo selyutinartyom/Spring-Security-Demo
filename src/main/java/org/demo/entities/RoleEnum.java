@@ -1,4 +1,4 @@
-package org.demo.constants;
+package org.demo.entities;
 
 /**
  * Перечисление - Роли пользователя
@@ -6,7 +6,7 @@ package org.demo.constants;
  * @author Selutin_AV
  * @since 17.08.2015 12:23
  */
-public enum RolesEnum {
+public enum RoleEnum {
     ROLE_ADMIN,
     ROLE_USER,
     ROLE_GUEST

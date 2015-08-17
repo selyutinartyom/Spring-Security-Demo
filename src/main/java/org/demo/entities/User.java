@@ -1,6 +1,7 @@
 package org.demo.entities;
 
 import org.demo.constants.EntitiesConst;
+import org.demo.constants.UserConst;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,13 +12,18 @@ import java.util.Set;
  * Created by Selutin_AV on 05.08.2015.
  */
 @Entity
-@Table(name = EntitiesConst.SQL_USERS)
+@Table(name = UserConst.SQL_USERS)
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = UserConst.SQL_ID, nullable = false, updatable = false)
     private long id;
+
+    @Column(name = UserConst.SQL_USERNAME, nullable = false, unique = true)
     private String username;
+
+    @Column(name = UserConst.SQL_PASSWORD, nullable = false, unique = false)
     private String password;
 
     @ManyToMany

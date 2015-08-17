@@ -10,11 +10,12 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * Конфигурирование Spring Security.
  * Используется Spring Security адаптер конфигуратора.
- *
+ * <p>
  * Created by Selutin_AV on 05.08.2015.
  */
 @Configuration
@@ -59,6 +60,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(h2UserDetailsService);
+        auth
+                .userDetailsService(h2UserDetailsService)
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
 }
