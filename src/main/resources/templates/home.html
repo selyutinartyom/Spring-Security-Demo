@@ -5,13 +5,22 @@
     <meta charset="utf-8"/>
     <title>Spring Security Demo</title>
 
+    <!-- Styles -->
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-    <script src="http://cdn.jsdelivr.net/webjars/angularjs/1.4.0/angular.min.js"
-            th:src="@{/webjars/angularjs/1.4.0/angular.min.js}"></script>
-    <script th:src="@{/js/home.js}" src="/js/home.js"></script>
+
 </head>
 <body data-ng-app="appHome">
+
+<div class="container">
+    <ul class="nav nav-pills" role="tablist">
+        <li class="active"><a href="/">home</a></li>
+        <li><a href="/login">login</a></li>
+        <li><a href="/secret">secret</a></li>
+    </ul>
+</div>
+<!--<div><a href="/login">Login</a></div>-->
+
 <h1>Welcome!</h1>
 
 <p>Yours home page.</p>
@@ -21,6 +30,23 @@
 
     <p>Привет {{yourName}}</p>
 </div>
+
+<div class="credits text-center">
+    <p>
+        <a href="https://github.com/selyutinartyom/Spring-Security-Demo">Github project</a>
+    </p>
+
+    <p>
+        <a href="mailto:selyutinartyom@localhost">Feedback</a>
+    </p>
+</div>
+
+<!-- Libraries -->
+<script src="http://cdn.jsdelivr.net/webjars/angularjs/1.4.0/angular.min.js"
+        th:src="@{/webjars/angularjs/1.4.0/angular.min.js}"></script>
+
+<!-- Local scripts -->
+<script th:src="@{/js/home.js}" src="/js/home.js"></script>
 
 </body>
 </html>
