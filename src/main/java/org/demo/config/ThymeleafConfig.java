@@ -18,10 +18,6 @@ public class ThymeleafConfig {
     @ConditionalOnClass({ SpringSecurityDialect.class })
     protected static class ThymeleafSecurityDialectConfiguration {
 
-        // TODO
-//        @Bean
-//        @ConditionalOnMissingBean
-
         @Bean
         public SpringSecurityDialect springSecurityDialect(){
             SpringSecurityDialect dialect = new SpringSecurityDialect();
