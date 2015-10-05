@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Error page</title>
+
+    <!-- Styles -->
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<div class="credits text-center">
+    <p><img src="img/404.png" alt=""/></p>
+</div>
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Error!</h1>
+
+            <p><span class="glyphicon glyphicon-exclamation-sign">Something went wrong :( </span></p>
+
+            <p><a class="btn btn-danger btn-lg" href="/" role="button">Go back to Main</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="credits text-center">
+    <p>
+        <a href="https://github.com/selyutinartyom/Spring-Security-Demo">Github project</a>
+    </p>
+
+    <p>
+        <a href="mailto:selyutinartyom@localhost">Feedback</a>
+    </p>
+
+    <p>
+        Design by - <a href="https://w3layouts.com/404-white-web-mobile-website-template/">W3Layouts</a>
+    </p>
+</div>
+
+</body>
+</html>

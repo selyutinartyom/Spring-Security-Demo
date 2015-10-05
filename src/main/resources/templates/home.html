@@ -14,12 +14,27 @@
 
 <div class="container">
     <ul class="nav nav-pills" role="tablist">
-        <li class="active"><a href="/">home</a></li>
-        <li><a href="/login">login</a></li>
-        <li><a href="/secret">secret</a></li>
+        <li><a href="/">main</a></li>
+        <li class="active"><a href="/home">home</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/login">login</a></li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/secret">secret</a></li>
     </ul>
 </div>
-<!--<div><a href="/login">Login</a></div>-->
+
+<div class="credits text-right">
+    <div class="container">
+        <div>
+            <p class="navbar-text navbar-center" th:inline="text">Пользователь <a href="#" class="navbar-link">[[${#httpServletRequest.remoteUser}]]</a>!
+            </p>
+        </div>
+
+        <div class="right">
+            <form class="" th:action="@{/logout}" method="post">
+                <button type="submit" class="btn btn-warning">Sign Out</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 <h1>Welcome!</h1>
 

@@ -18,9 +18,10 @@
 
 <div class="container">
     <ul class="nav nav-pills" role="tablist">
-        <li><a href="/">home</a></li>
+        <li><a href="/">main</a></li>
+        <li><a href="/home">home</a></li>
         <li class="active"><a href="/login">login</a></li>
-        <li><a href="/secret">secret</a></li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/secret">secret</a></li>
     </ul>
 </div>
 
