@@ -13,12 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = UserConst.SQL_USERS)
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = UserConst.SQL_ID, nullable = false, updatable = false)
-    private long id;
+public class User extends AbstractEntity {
 
     @Column(name = UserConst.SQL_USERNAME, nullable = false, unique = true)
     private String username;
@@ -38,14 +33,6 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getUsername() {

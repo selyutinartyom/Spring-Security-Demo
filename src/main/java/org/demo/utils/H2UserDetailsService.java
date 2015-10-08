@@ -39,8 +39,16 @@ public class H2UserDetailsService implements UserDetailsService {
 
             // Возвращаем сконвертированного из сущности базы данных в сущность Spring Security пользователя.
             // Spring сам для этого пользователя проверит соответствие введенного пароля и пароля объекта в базе данных
+
+            // Проверка только логина, пароля и роли
+//            loadedUser = new org.springframework.security.core.userdetails.User(
+//                    client.getUsername(), client.getPassword(), client.getRoles());
+
+            // Проверка всех аттрибутов
             loadedUser = new org.springframework.security.core.userdetails.User(
-                    client.getUsername(), client.getPassword(), client.getRoles());
+                    client.getUsername(), client.getPassword(),
+                    client.isEnable(), true, true, true,
+                    client.getRoles());
 
             // Заглушка для наделения пользователя ролью ROLE_USER в DummyAuthority
 //            loadedUser = new org.springframework.security.core.userdetails.User(

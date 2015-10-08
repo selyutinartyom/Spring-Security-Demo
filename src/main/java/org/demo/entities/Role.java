@@ -15,12 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = RoleConst.SQL_ROLES)
-public class Role implements GrantedAuthority {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = RoleConst.SQL_ID, nullable = false, updatable = false)
-    private long id;
+public class Role extends AbstractEntity implements GrantedAuthority {
 
     @Column(name = RoleConst.SQL_ROLE, nullable = false)
     @Enumerated(EnumType.STRING)
@@ -35,14 +30,6 @@ public class Role implements GrantedAuthority {
 
     public Role(RoleEnum role) {
         this.role = role;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public RoleEnum getRole() {
