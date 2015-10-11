@@ -4,8 +4,8 @@
 
 -- Создание пользователя admin с ролью ROLE_ADMIN, если таких нет
 -- password = 1, see org.demo.utils.Utils.GenerateHashedPassword
-INSERT INTO users (id, username, password, enable)
-SELECT 1, 'admin', '$2a$10$ibRP08qCKADwdjjwymscI.XFoA.QFoveqdRbsh7VIiXGQff/ZMRZW', TRUE
+INSERT INTO users (id, username, password, enable, locked)
+SELECT 1, 'admin', '$2a$10$ibRP08qCKADwdjjwymscI.XFoA.QFoveqdRbsh7VIiXGQff/ZMRZW', TRUE, FALSE
 WHERE NOT EXISTS(SELECT 1 FROM users WHERE username = 'admin');
 
 INSERT INTO roles (id, role, enable)

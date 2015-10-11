@@ -38,18 +38,21 @@ public class H2UserDetailsService implements UserDetailsService {
             // Получаем пользователя
             User client = users.findByUsername(username);
 
-            // Возвращаем сконвертированного из сущности базы данных в сущность Spring Security пользователя.
-            // Spring сам для этого пользователя проверит соответствие введенного пароля и пароля объекта в базе данных
-
-            // Проверка только логина, пароля и роли
-//            loadedUser = new org.springframework.security.core.userdetails.User(
-//                    client.getUsername(), client.getPassword(), client.getRoles());
-
             // Проверка всех аттрибутов
-            Boolean accountNonExpired = client.getExpired() == null ? true : !client.getExpired().isBefore(LocalDateTime.now());
+            if (client == null)
+                throw new UsernameNotFoundException("Invalid username and password");
+
+            Boolean accountNonExpired = client.getExpired() == null ||
+                    !client.getExpired().isBefore(LocalDateTime.now());
+
+            Boolean credentialsNonExpired = client.getCredentialsExpired() == null ||
+                    !client.getCredentialsExpired().isBefore(LocalDateTime.now());
+
+            // Возвращаем сконвертированного из сущности базы данных в сущность Spring Security пользователя.
+            // Spring для этого пользователя проверит соответствие введенного пароля и пароля объекта в базе данных
             loadedUser = new org.springframework.security.core.userdetails.User(
                     client.getUsername(), client.getPassword(),
-                    client.isEnable(), accountNonExpired, true, true,
+                    client.isEnable(), accountNonExpired, credentialsNonExpired, !client.isLocked(),
                     client.getRoles());
 
             // Заглушка для наделения пользователя ролью ROLE_USER в DummyAuthority

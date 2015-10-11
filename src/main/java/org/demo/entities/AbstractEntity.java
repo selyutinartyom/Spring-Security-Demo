@@ -14,14 +14,23 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
 
+    /**
+     * Идентификатор
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = AbstractConst.SQL_ID, nullable = false, updatable = false)
     protected long id;
 
+    /**
+     * Признак доступности (сущность включена или нет)
+     */
     @Column(name = AbstractConst.SQL_ENABLE, nullable = false)
     protected boolean enable = false;
 
+    /**
+     * Описание
+     */
     @Column(name = AbstractConst.SQL_DESC)
     protected String desc;
 

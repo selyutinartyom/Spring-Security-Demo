@@ -28,9 +28,10 @@
 <div class="jumbotron">
     <div class="container">
         <div class="row">
-            <!-- TODO проверка типа ошибки и вывод соответствующего сообшения -->
-            <div th:if="${param.error}" class="alert alert-danger">
-                Invalid username and password.
+            <div th:if="${param.error}"
+                 th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+                 class="alert alert-danger">
+                <span th:text="${errorMsg}">Wrong input!</span>
             </div>
             <div th:if="${param.logout}" class="alert alert-info">
                 You have been logged out.

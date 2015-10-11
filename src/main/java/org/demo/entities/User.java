@@ -15,12 +15,21 @@ import java.util.Set;
 @Table(name = UserConst.SQL_USERS)
 public class User extends AuthEntity {
 
+    /**
+     * Логин
+     */
     @Column(name = UserConst.SQL_USERNAME, nullable = false, unique = true)
     private String username;
 
+    /**
+     * Пароль
+     */
     @Column(name = UserConst.SQL_PASSWORD, nullable = false, unique = false)
     private String password;
 
+    /**
+     * Роли
+     */
     @ManyToMany
     @JoinTable(name = EntitiesConst.SQL_USERS_ROLES,
             joinColumns = {@JoinColumn(name = EntitiesConst.SQL_USER_ID)},

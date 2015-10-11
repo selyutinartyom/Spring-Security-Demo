@@ -17,10 +17,16 @@ import java.util.Set;
 @Table(name = RoleConst.SQL_ROLES)
 public class Role extends AbstractEntity implements GrantedAuthority {
 
+    /**
+     * Роль
+     */
     @Column(name = RoleConst.SQL_ROLE, nullable = false)
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
+    /**
+     * Пользователи
+     */
     @JsonIgnore
     @ManyToMany(mappedBy = RoleConst.SQL_ROLES)
     private Set<User> users;
