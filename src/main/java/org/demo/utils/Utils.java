@@ -18,7 +18,6 @@ public class Utils {
      */
     public static String GenerateHashedPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(password);
-        return hashedPassword;
+        return passwordEncoder.encode(password);
     }
 }

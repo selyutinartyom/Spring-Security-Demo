@@ -27,7 +27,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * Конфигурация доступа к шаблонам
      *
-     * @param http
+     * @param http Устанавливает фильтры и связанные с ними сервисные компоненты, используемые
+     *             для применения механизмов аутентификации, для защиты URL-ов, представления login и error страниц
+     *             и многое другое
      * @throws Exception
      */
     @Override
@@ -55,7 +57,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * Регистрируем нашу реализацию UserDetailsService.
      * Определение сервиса для соединения юзеров Spring Security и юзеров из базы данных.
      *
-     * @param auth
+     * @param auth SecurityBuilder используется для создания AuthenticationManager.
+     *             Позволяет легко строить in memory authentication, LDAP authentication, JDBC based authentication,
+     *             добавление UserDetailsService и добавление AuthenticationProvider-ов.
      * @throws Exception
      */
     @Autowired

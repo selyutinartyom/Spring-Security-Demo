@@ -15,13 +15,12 @@ import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 public class ThymeleafConfig {
 
     @Configuration
-    @ConditionalOnClass({ SpringSecurityDialect.class })
+    @ConditionalOnClass({SpringSecurityDialect.class})
     protected static class ThymeleafSecurityDialectConfiguration {
 
         @Bean
-        public SpringSecurityDialect springSecurityDialect(){
-            SpringSecurityDialect dialect = new SpringSecurityDialect();
-            return dialect;
+        public SpringSecurityDialect springSecurityDialect() {
+            return new SpringSecurityDialect();
         }
     }
 
