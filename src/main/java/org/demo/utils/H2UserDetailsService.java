@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -45,9 +46,10 @@ public class H2UserDetailsService implements UserDetailsService {
 //                    client.getUsername(), client.getPassword(), client.getRoles());
 
             // Проверка всех аттрибутов
+            Boolean accountNonExpired = client.getExpired() == null ? true : !client.getExpired().isBefore(LocalDateTime.now());
             loadedUser = new org.springframework.security.core.userdetails.User(
                     client.getUsername(), client.getPassword(),
-                    client.isEnable(), true, true, true,
+                    client.isEnable(), accountNonExpired, true, true,
                     client.getRoles());
 
             // Заглушка для наделения пользователя ролью ROLE_USER в DummyAuthority

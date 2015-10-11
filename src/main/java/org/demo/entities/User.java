@@ -13,7 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = UserConst.SQL_USERS)
-public class User extends AbstractEntity {
+public class User extends AuthEntity {
 
     @Column(name = UserConst.SQL_USERNAME, nullable = false, unique = true)
     private String username;

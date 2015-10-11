@@ -16,4 +16,5 @@ public abstract class AbstractConst {
     public static final String SQL_NAME = "name";
     public static final String SQL_SHORTNAME = "shortname";
     public static final String SQL_DESC = "description";
+    public static final String SQL_EXPIRED = "expired";
 }
