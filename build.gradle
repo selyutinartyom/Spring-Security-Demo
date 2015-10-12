@@ -30,7 +30,7 @@ repositories {
 
 dependencies {
     /**
-     * Bsck-end
+     * Back-end
      */
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("org.springframework.boot:spring-boot-starter-security")

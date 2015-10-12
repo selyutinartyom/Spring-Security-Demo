@@ -4,6 +4,7 @@ import org.demo.constants.EntitiesConst;
 import org.demo.constants.UserConst;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -66,5 +67,18 @@ public class User extends AuthEntity {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    /**
+     * Возвращает множество enable ролей пользователя или пустое множество
+     *
+     * @return множество enable ролей пользователя
+     */
+    public Set<Role> getEnableRoles() {
+        Set<Role> result = new HashSet<>();
+        roles.forEach(role -> {
+            if (role.isEnable()) result.add(role);
+        });
+        return result;
     }
 }
