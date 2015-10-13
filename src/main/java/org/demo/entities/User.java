@@ -1,5 +1,6 @@
 package org.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.demo.constants.EntitiesConst;
 import org.demo.constants.UserConst;
 
@@ -25,6 +26,7 @@ public class User extends AuthEntity {
     /**
      * Пароль
      */
+    @JsonIgnore
     @Column(name = UserConst.SQL_PASSWORD, nullable = false, unique = false)
     private String password;
 
