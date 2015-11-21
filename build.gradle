@@ -16,12 +16,15 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
 
 sourceSets.main.java.srcDirs = ['src/main/java']
+mainClassName = 'org.demo.Application'
 
 jar {
     baseName = 'demo'
     version = '0.0.1-SNAPSHOT'
+    manifest.attributes('Main-Class': mainClassName);
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
