@@ -13,6 +13,7 @@ hs_err_pid*
 
 # Gradle, IDEA and others
 .gradle
+gradle.properties
 .idea
 *.iml
 build/
